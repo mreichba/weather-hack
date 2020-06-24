@@ -10,8 +10,6 @@ class App extends React.Component {
     city: ''
   }
 
-  //  const BASE_URL = 'http://api.weatherstack.com/';
-
   apiCall = (city) => {
     fetch(`http://api.weatherstack.com/current?access_key=${config.REACT_APP_API_KEY}&query=${city}&units=f`)
       .then((res) => {
