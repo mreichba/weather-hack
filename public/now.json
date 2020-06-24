@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "alias": "masons-weather-hack",
+  "name": "masons-weather-hack-app",
+  "routes": [
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": ".*",
+      "dest": "/index.html"
+    }
+  ]
+}
