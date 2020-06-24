@@ -13,7 +13,7 @@ class App extends React.Component {
   //  const BASE_URL = 'http://api.weatherstack.com/';
 
   apiCall = (city) => {
-    fetch(`http://api.weatherstack.com/current?access_key=ae432a0ce646e77f9d2f6f14c5f54b0a&query=${city}&units=f`)
+    fetch(`http://api.weatherstack.com/current?access_key=${config.REACT_APP_API_KEY}&query=${city}&units=f`)
       .then((res) => {
         if (!res.ok)
           return res.json().then(e => Promise.reject(e));
