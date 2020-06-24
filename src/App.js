@@ -1,7 +1,6 @@
 import React from 'react';
 import config from './config'
 import Search from './Components/search'
-// import Main from './Components/main'
 import './App.css';
 
 
@@ -43,7 +42,6 @@ class App extends React.Component {
             <Search
               search={this.handleSearchSubmit}
             />
-            {/* <Main /> */}
           </div>
           <div>
             <h3>Temperature: {this.state.city.temperature + 'F'}</h3>
