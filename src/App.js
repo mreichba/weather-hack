@@ -41,7 +41,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1>Weather Hack</h1>
+          <h1>U.S. Weather Hack</h1>
         </header>
 
         <section className="weather-box">
