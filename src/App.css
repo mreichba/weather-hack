@@ -1,5 +1,10 @@
+html{
+  background-color: rgb(73, 155, 182);
+}
+
 .App {
   text-align: center;
+
 }
 
 .App-logo {
@@ -15,7 +20,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 15vh;
+  height: 20%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -26,19 +31,44 @@
 
 .weather-box{
   background-color: rgb(73, 155, 182);
-  min-height: 83.8vh;
+  height: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: top;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.currentWeather{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 20px 0;
+  height: 100%;
+}
+
+.currentWeather div{
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid black; */
+  margin: 20px;
+}
+
+.currentWeather :first-child{
+  display: block;
+  
+}
+
+span{
+  color: rgb(167, 26, 26);
 }
 
 .App-link {
   color: #61dafb;
 }
 
+@media 
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

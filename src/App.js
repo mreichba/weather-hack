@@ -2,13 +2,15 @@ import React from 'react';
 import config from './config'
 import Search from './Components/search'
 import './App.css';
+import { Sunny, Cloudy, Rain, Snow } from 'weather-styled-icon'
 
 
 class App extends React.Component {
   state = {
     city: '',
     weather: '',
-    desc: ''
+    desc: '',
+    anima: ''
   }
 
   apiCall = (city) => {
@@ -25,7 +27,6 @@ class App extends React.Component {
           weather: data.main,
           desc: data.weather[0].description
         })
-        console.log(this.state.desc)
       })
       .catch(error => {
         console.error({ error })
@@ -36,30 +37,96 @@ class App extends React.Component {
     this.apiCall(city);
   }
 
+  componentDidMount() {
+    this.apiCall('Tampa')
+  }
+
+  imgDecider = () => {
+    const weather = ['sunny', 'cloud', 'rain', 'snow'];
+    const description = this.state.desc;
+    if (description.includes('cloud')) {
+      return <Cloudy />;
+    } else if (description.includes('sunny') || description.includes('clear')) {
+      return <Sunny />;
+    } else if (description.includes('rain')) {
+      return <Rain />;
+    } else if (description.includes('snow')) {
+      return <Snow />;
+    }
+  }
+
+  // imgDecider = () => {
+  //   const weather = ['cloud', 'sunny', 'snow', 'rain'];
+  //   const description = this.state.desc;
+  //   weather.forEach(item => {
+  //     console.log(item)
+  //     console.log(description.includes(item))
+  //     if (description.includes(item) === true) {
+  //       return <Cloudy />;
+  //     } else {
+  //       return <Sunny />
+  //     }
+  //   })
+  // }
+
+  // imgDecider = () => {
+  //   const weather = [Sunny, Cloudy, Rain, Snow];
+  //   const description = this.state.desc;
+
+  //   weather.forEach(item => {
+  //     if (description.includes(item)) {
+  //       return <item />
+  //     }
+
+  //   })
+  // }
+
+
+
+
   render() {
 
     return (
       <div className="App">
         <header className="App-header">
-          <h1>U.S. Weather Hack</h1>
+          {/* <h1>U.S. Weather Hack</h1> */}
         </header>
 
         <section className="weather-box">
           <div>
-            <h2>Search Weather by City</h2>
+            <h1>Search Weather by City</h1>
             <Search
               search={this.handleSearchSubmit}
             />
           </div>
           <div>
-            <h3>Your {this.state.city.name} weather forcast!</h3>
-            <h3>Low-Temperature: {this.state.weather.temp_min + 'F'}</h3>
-            <h3>High-Temperature: {this.state.weather.temp_max + 'F'}</h3>
-            <h3>Temperature: {this.state.weather.temp}F</h3>
-            <h3>Feels Like: {this.state.weather.feels_like + 'F'}</h3>
-            <h3>Humidity: {this.state.weather.humidity + '%'}</h3>
-            <h3>Description: {this.state.desc}</h3>
-            <h3>Visibility: {this.state.city.visibility}</h3>
+            <h3>Your <span>{this.state.city.name}</span> weather forcast!</h3>
+          </div>
+          <div>
+            {/* <Img /> */}
+
+            {this.imgDecider()}
+            <h3>Description: <span>{this.state.desc}</span></h3>
+          </div>
+          <div className='currentWeather'>
+            <div>
+              <h3>Current Temp: <span>{this.state.weather.temp}F</span></h3>
+            </div>
+            <div>
+              <h3>Feels Like: <span>{this.state.weather.feels_like + 'F'}</span></h3>
+            </div>
+            <div>
+              <h3>Low-Temp: <span>{this.state.weather.temp_min + 'F'}</span></h3>
+            </div>
+            <div>
+              <h3>High-Temp: <span>{this.state.weather.temp_max + 'F'}</span></h3>
+            </div>
+            <div>
+              <h3>Humidity: <span>{this.state.weather.humidity + '%'}</span></h3>
+            </div>
+            <div>
+              <h3>Visibility: <span>{this.state.city.visibility}</span></h3>
+            </div>
           </div>
 
         </section>
